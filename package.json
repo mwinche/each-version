@@ -1,0 +1,39 @@
+{
+  "name": "each-version",
+  "version": "1.0.0",
+  "description": "CLI to run a given command against each configuration of dependencies in each.json",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "ava tests/",
+    "lint": "eslint lib/ tests/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/mwinche/each-version.git"
+  },
+  "keywords": [
+    "each",
+    "version",
+    "versions",
+    "all",
+    "configuration",
+    "test",
+    "CLI",
+    "command",
+    "runner"
+  ],
+  "author": "Matt Winchester",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mwinche/each-version/issues"
+  },
+  "homepage": "https://github.com/mwinche/each-version#readme",
+  "devDependencies": {
+    "ava": "0.15.2",
+    "eslint": "2.13.1",
+    "proxyquire": "1.7.9"
+  },
+  "dependencies": {
+    "child-process-promise": "2.0.3"
+  }
+}
