@@ -4,8 +4,8 @@
   "description": "CLI to run a given command against each configuration of dependencies in each.json",
   "main": "lib/index.js",
   "scripts": {
-    "test": "ava tests/",
-    "lint": "eslint lib/ tests/"
+    "test": "ava",
+    "lint": "eslint lib/ test/"
   },
   "repository": {
     "type": "git",
@@ -31,7 +31,8 @@
   "devDependencies": {
     "ava": "0.15.2",
     "eslint": "2.13.1",
-    "proxyquire": "1.7.9"
+    "proxyquire": "1.7.9",
+    "sinon": "1.17.4"
   },
   "dependencies": {
     "child-process-promise": "2.0.3"
