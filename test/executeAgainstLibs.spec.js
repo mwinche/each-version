@@ -29,6 +29,7 @@ test('should execute the command and return the pass status', t => {
     return execute(command, environment)
         .then(result => {
             t.is(result.pass, true);
+            t.is(result.environment, environment.name);
             t.true(install.withArgs(environment.libs).calledOnce);
             t.true(uninstall.withArgs(environment.libs).calledOnce);
         })
@@ -63,6 +64,7 @@ test('should warn about failure, but still resolve', t => {
         .then(result => {
             t.is(result.pass, true);
             t.is(result.error, 'error\n');
+            t.is(result.environment, environment.name);
             t.true(install.withArgs(environment.libs).calledOnce);
             t.true(uninstall.withArgs(environment.libs).calledOnce);
         })
@@ -97,6 +99,7 @@ test('should warn about failure, but still resolve and report as failed', t => {
         .then(result => {
             t.is(result.pass, false);
             t.is(result.error, 'error\n');
+            t.is(result.environment, environment.name);
             t.true(install.withArgs(environment.libs).calledOnce);
             t.true(uninstall.withArgs(environment.libs).calledOnce);
         })
@@ -131,6 +134,7 @@ test('should warn about failure, but still resolve and report as failed', t => {
         .then(status => t.fail('should not have passed'))
         .catch(result => {
             t.pass('should have failed');
+            t.is(result.environment, environment.name);
             t.true(install.withArgs(environment.libs).calledOnce);
             t.true(uninstall.withArgs(environment.libs).calledOnce);
         });
@@ -138,7 +142,10 @@ test('should warn about failure, but still resolve and report as failed', t => {
 
 test('should handle a failed uninstall', t => {
     const install = sinon.stub().returns(Promise.resolve(0));
-    const uninstall = sinon.stub().returns(Promise.reject(0));
+    const uninstall = sinon.stub().returns(Promise.reject({
+        stderr: 'failure',
+        cmd: 'echo will not run'
+    }));
     
     const execute = proxyquire('../lib/executeAgainstLibs', {
         './installDeps': install,
@@ -164,6 +171,7 @@ test('should handle a failed uninstall', t => {
         .then(status => t.fail('should not have passed'))
         .catch(result => {
             t.pass('should have failed');
+            t.is(result.environment, environment.name);
             t.false(install.called);
             t.true(uninstall.withArgs(environment.libs).calledOnce);
         });
@@ -198,6 +206,7 @@ test('should handle a failed install', t => {
         .catch(result => {
             t.is(result.command, 'npm install');
             t.pass('should have failed');
+            t.is(result.environment, environment.name);
             t.true(install.withArgs(environment.libs).calledOnce);
             t.true(uninstall.withArgs(environment.libs).calledOnce);
         });
@@ -232,6 +241,7 @@ test('should handle a failed install on Windows', t => {
         .catch(result => {
             t.is(result.command, 'npm install');
             t.pass('should have failed');
+            t.is(result.environment, environment.name);
             t.true(install.withArgs(environment.libs).calledOnce);
             t.true(uninstall.withArgs(environment.libs).calledOnce);
         });
@@ -266,6 +276,7 @@ test('should handle a failed uninstall', t => {
         .catch(result => {
             t.is(result.command, 'npm uninstall');
             t.pass('should have failed');
+            t.is(result.environment, environment.name);
             t.false(install.called);
             t.true(uninstall.withArgs(environment.libs).calledOnce);
         });
@@ -300,6 +311,7 @@ test('should handle a failed uninstall on Windows', t => {
         .catch(result => {
             t.is(result.command, 'npm uninstall');
             t.pass('should have failed');
+            t.is(result.environment, environment.name);
             t.false(install.called);
             t.true(uninstall.withArgs(environment.libs).calledOnce);
         });
