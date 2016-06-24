@@ -1,7 +1,6 @@
 const sinon = require('sinon');
 
-const mock = sinon.spy();
-
-mock.spawn = sinon.spy();
-
-module.exports = mock;
+module.exports = {
+    spawn: sinon.stub(),
+    exec: sinon.stub()
+};
