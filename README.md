@@ -26,7 +26,7 @@ You can install it globally. You can install locally and use it in npm run scrip
 
 ## Configuration
 
-CLI usage requires a `.each.json` file to be available. It must be an array of environments. All enviroment must contain
+CLI usage requires a `.each.json` file to be available. It must be an array of environments. All enviroments must contain
 all the same dependencies. An environment has three properties:
 
 ```json
