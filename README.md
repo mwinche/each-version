@@ -89,7 +89,7 @@ Instructions on how to handle non zero exit codes. Options are:
 `each karma start`
 
 The command will return a zero/no zero exit code based on the results of the command and the configuration of your
-`.each.json`. See "Configuration" → "strat" in this README.
+`.each.json`. [See "strat"](#strat-optional-defaultfail) in this README.
 
 ### Programmatic
 
@@ -111,6 +111,10 @@ each(`karma start`, config)
         console.error(`"${err.command}" failed under environment ${err.environment}.`, err.error);
     });
 ```
+
+## Performance
+
+A naive implementation is being used for the initial release. Performance improvements could definitely be added down the road.
 
 ## Node version dependency
 
