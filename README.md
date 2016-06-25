@@ -13,7 +13,7 @@ might be if you want to verify that your Angular directive library works against
 a library, helping keep your dependencies green.
 
 To accomplish this, `each-version` will uninstall all specificed dependencies and install the requested versions once for
-each environment specified and then run the request command. It then aggregates the results and reports them back.
+each environment specified and then run the requested command. It then aggregates the results and reports them back.
 
 ## Installation
 
