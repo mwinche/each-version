@@ -22,7 +22,7 @@ each environment specified and then run the requested command. It then aggregate
 `npm install each-version`
 
 All the usual rules for `npm install` in regards to CLIs apply. You can use it as a `dependency` or a `devDependency`.
-You can install it globally. You can install locally and use in npm run scripts. All the goodies.
+You can install it globally. You can install locally and use it in npm run scripts. All the goodies.
 
 ## Configuration
 
