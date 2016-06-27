@@ -3,8 +3,6 @@ each-version
 
 [![Build Status](https://travis-ci.org/mwinche/each-version.svg?branch=master)](https://travis-ci.org/mwinche/each-version)
 
-## In Development, this header will be removed upon the initial release!
-
 ## Overview
 
 `each-version` will take a given command and run it against all specified variations of your dependencies. An example usage
