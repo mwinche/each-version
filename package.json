@@ -1,6 +1,6 @@
 {
   "name": "each-version",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CLI to run a given command against each configuration of dependencies in each.json",
   "main": "lib/index.js",
   "scripts": {
