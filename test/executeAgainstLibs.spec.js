@@ -2,13 +2,16 @@ const test = require('ava');
 const proxyquire = require('proxyquire');
 const sinon = require('sinon');
 
+const mockLog = (status, promise) => () => promise;
+
 test('should execute the command and return the pass status', t => {
     const install = sinon.stub().returns(Promise.resolve(0));
     const uninstall = sinon.stub().returns(Promise.resolve(0));
     
     const execute = proxyquire('../lib/executeAgainstLibs', {
         './installDeps': install,
-        './uninstallDeps': uninstall
+        './uninstallDeps': uninstall,
+       './log': mockLog
     });
 
     const environment = {
@@ -42,7 +45,8 @@ test('should warn about failure, but still resolve', t => {
     
     const execute = proxyquire('../lib/executeAgainstLibs', {
         './installDeps': install,
-        './uninstallDeps': uninstall
+        './uninstallDeps': uninstall,
+       './log': mockLog
     });
 
     const environment = {
@@ -77,7 +81,8 @@ test('should warn about failure, but still resolve and report as failed', t => {
     
     const execute = proxyquire('../lib/executeAgainstLibs', {
         './installDeps': install,
-        './uninstallDeps': uninstall
+        './uninstallDeps': uninstall,
+       './log': mockLog
     });
 
     const environment = {
@@ -112,7 +117,8 @@ test('should warn about failure, but still resolve and report as failed', t => {
     
     const execute = proxyquire('../lib/executeAgainstLibs', {
         './installDeps': install,
-        './uninstallDeps': uninstall
+        './uninstallDeps': uninstall,
+       './log': mockLog
     });
 
     const environment = {
@@ -149,7 +155,8 @@ test('should handle a failed uninstall', t => {
     
     const execute = proxyquire('../lib/executeAgainstLibs', {
         './installDeps': install,
-        './uninstallDeps': uninstall
+        './uninstallDeps': uninstall,
+       './log': mockLog
     });
 
     const environment = {
@@ -183,7 +190,8 @@ test('should handle a failed install', t => {
     
     const execute = proxyquire('../lib/executeAgainstLibs', {
         './installDeps': install,
-        './uninstallDeps': uninstall
+        './uninstallDeps': uninstall,
+       './log': mockLog
     });
 
     const environment = {
@@ -218,7 +226,8 @@ test('should handle a failed install on Windows', t => {
     
     const execute = proxyquire('../lib/executeAgainstLibs', {
         './installDeps': install,
-        './uninstallDeps': uninstall
+        './uninstallDeps': uninstall,
+       './log': mockLog
     });
 
     const environment = {
@@ -253,7 +262,8 @@ test('should handle a failed uninstall', t => {
     
     const execute = proxyquire('../lib/executeAgainstLibs', {
         './installDeps': install,
-        './uninstallDeps': uninstall
+        './uninstallDeps': uninstall,
+       './log': mockLog
     });
 
     const environment = {
@@ -288,7 +298,8 @@ test('should handle a failed uninstall on Windows', t => {
     
     const execute = proxyquire('../lib/executeAgainstLibs', {
         './installDeps': install,
-        './uninstallDeps': uninstall
+        './uninstallDeps': uninstall,
+       './log': mockLog
     });
 
     const environment = {
