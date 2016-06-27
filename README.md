@@ -88,7 +88,7 @@ Instructions on how to handle non zero exit codes. Options are:
 
 `each karma start`
 
-The command will return a zero/no zero exit code based on the results of the command and the configuration of your
+The command will return a zero/non zero exit code based on the results of the command and the configuration of your
 `.each.json`. [See "strat"](#strat-optional-defaultfail) in this README.
 
 ### Programmatic
@@ -107,7 +107,7 @@ each(`karma start`, config)
 
         console.log(failures.length === 0 ? 'Success!' : `Failed in the following environments: ${failures.join(', ')}`);
     })
-    .catch(err -> {
+    .catch(err => {
         console.error(`"${err.command}" failed under environment ${err.environment}.`, err.error);
     });
 ```

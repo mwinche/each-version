@@ -11,6 +11,9 @@
     "type": "git",
     "url": "git+ssh://git@github.com/mwinche/each-version.git"
   },
+  "bin": {
+    "each": "./lib/cli.js"
+  },
   "keywords": [
     "each",
     "version",
@@ -35,6 +38,7 @@
     "sinon": "1.17.4"
   },
   "dependencies": {
-    "child-process-promise": "2.0.3"
+    "child-process-promise": "2.0.3",
+    "colors": "1.1.2"
   }
 }
